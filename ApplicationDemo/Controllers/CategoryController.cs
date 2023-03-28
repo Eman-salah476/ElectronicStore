@@ -9,8 +9,8 @@ namespace ApplicationDemo.Controllers
     [Route("api/Category")]
     public class CategoryController : Controller
     {
-        private readonly ILookUpService<Category> _lookUpService;
-        public CategoryController(ILookUpService<Category> lookUpService)
+        private readonly ILookUpService _lookUpService;
+        public CategoryController(ILookUpService lookUpService)
         {
             _lookUpService = lookUpService;
         }

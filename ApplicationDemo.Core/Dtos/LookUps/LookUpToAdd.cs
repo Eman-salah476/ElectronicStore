@@ -1,4 +1,6 @@
-﻿namespace ApplicationDemo.Core.Dtos.LookUp
+﻿using ApplicationDemo.Domain.Enums;
+
+namespace ApplicationDemo.Core.Dtos.LookUp
 {
     public class LookUpToAdd
     {

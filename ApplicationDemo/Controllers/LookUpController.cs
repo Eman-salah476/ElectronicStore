@@ -1,25 +1,20 @@
 ﻿using ApplicationDemo.Core.Dtos.LookUp;
+using ApplicationDemo.Core.Services;
 using ApplicationDemo.Core.Services.Interfaces;
-using ApplicationDemo.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApplicationDemo.Controllers
 {
     [ApiController]
-    [Route("api/Brand")]
-    public class BrandController : Controller
+    [Route("api/LookUp")]
+    public class LookUpController : Controller
     {
-        private readonly ILookUpService<Brand> _lookUpService;
-        public BrandController(ILookUpService<Brand> lookUpService)
-        {
-            _lookUpService = lookUpService;
-        }
-
-        [HttpPost]
         public ActionResult Add(LookUpToAdd lookUpToAdd)
         {
             try
             {
+                ILookUpService lookUpService = null;
+     
                 var isAdded = _lookUpService.AddLookUp(lookUpToAdd);
                 if (!isAdded)
                     return BadRequest();
@@ -37,8 +32,8 @@ namespace ApplicationDemo.Controllers
         {
             try
             {
-                var fetchedBrands = _lookUpService.GetLookUps();
-                return Ok(fetchedBrands);
+                var fetchedProperties = _lookUpService.GetLookUps();
+                return Ok(fetchedProperties);
             }
             catch (Exception ex)
             {

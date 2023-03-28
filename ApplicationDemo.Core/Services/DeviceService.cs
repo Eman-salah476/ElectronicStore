@@ -1,4 +1,5 @@
-﻿using ApplicationDemo.Core.Dtos.Device;
+﻿using ApplicationDemo.Core.Builders;
+using ApplicationDemo.Core.Dtos.Device;
 using ApplicationDemo.Core.Services.Interfaces;
 using ApplicationDemo.Domain.Entities;
 using ApplicationDemo.Infrastructure.Repositories.GenericRepository;
@@ -41,5 +42,28 @@ namespace ApplicationDemo.Core.Services
             var devicesToDisplay = _mapper.Map<List<DeviceToDisplayDto>>(fetchedDeviced);
             return devicesToDisplay;
         }
+
+        public bool UpdatePrice(DevicePriceToUpdateDto devicePriceToUpdate)
+        {
+            var fetchedDevice = _genericRepository.GetById(devicePriceToUpdate.Id);
+            if (fetchedDevice is null)
+                return false;
+
+
+            if (devicePriceToUpdate.SetDiscount)
+            {
+                var deviceBuilder = new DeviceBuilder(fetchedDevice);
+                fetchedDevice = deviceBuilder.SetDiscount(devicePriceToUpdate.DiscountRatio)
+                                             .Build();
+            }
+            else
+            {
+                fetchedDevice.Price = devicePriceToUpdate.Price;
+            }
+
+            var isUpdated = _genericRepository.Update(fetchedDevice);
+            return isUpdated;
+        }
+
     }
 }

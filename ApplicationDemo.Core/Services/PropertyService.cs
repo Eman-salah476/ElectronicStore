@@ -6,7 +6,7 @@ using AutoMapper;
 
 namespace ApplicationDemo.Core.Services
 {
-    public class PropertyService : ILookUpService<Property>
+    public class PropertyService : ILookUpService
     {
         private readonly IGenericRepository<Property> _genericRepository;
         private readonly IMapper _mapper;
