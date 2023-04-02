@@ -7,10 +7,13 @@ namespace ApplicationDemo.Core.Dtos.Device
     {
         [Required]
         public string Name { get; set; }
-        [Required]
-        public IFormFile Image { get; set; }
+        public IFormFile DeviceImage { get; set; }
         [Required]
         public double Price { get; set; }
+        public bool HasDiscount { get; set; }
+        public double DiscountRatio { get; set; }
+        [Required]
+        public double ShippmentPrice { get; set; }
         [Required]
         public int Code { get; set; }
         public bool Available { get; set; } = true;

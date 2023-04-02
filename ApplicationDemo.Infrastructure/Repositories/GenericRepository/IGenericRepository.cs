@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using Microsoft.EntityFrameworkCore.Query;
+using System.Linq.Expressions;
 
 namespace ApplicationDemo.Infrastructure.Repositories.GenericRepository
 {
@@ -10,6 +11,7 @@ namespace ApplicationDemo.Infrastructure.Repositories.GenericRepository
         bool Add(T entity);
         bool Update(T entity);
         bool Delete(Guid id);
-        List<T> FindByCondition(Expression<Func<T, bool>> expression);
+        List<T> FindByCondition(Expression<Func<T, bool>> expression = null,
+                                Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null);
     }
 }

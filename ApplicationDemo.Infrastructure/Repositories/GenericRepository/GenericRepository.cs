@@ -1,5 +1,7 @@
 ﻿
 using ApplicationDemo.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore.Query;
+using System.Linq.Expressions;
 
 namespace ApplicationDemo.Infrastructure.Repositories.GenericRepository
 {
@@ -28,10 +30,17 @@ namespace ApplicationDemo.Infrastructure.Repositories.GenericRepository
             return Save();
         }
 
-        public List<T> FindByCondition(System.Linq.Expressions.Expression<Func<T, bool>> expression)
+        public List<T> FindByCondition(Expression<Func<T, bool>> expression = null,
+                                       Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
         {
+            IQueryable<T> query = _context.Set<T>();
+            if(expression != null)
+                query = query.Where(expression);
 
-            return _context.Set<T>().Where(expression).ToList();
+            if (include != null)
+                query = include(query);
+
+            return query.ToList();
         }
 
         public List<T> GetAll()

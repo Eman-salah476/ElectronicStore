@@ -1,5 +1,5 @@
 ﻿using ApplicationDemo.Core.Dtos.Device;
-using ApplicationDemo.Core.Services.Interfaces;
+using ApplicationDemo.Core.Services.DeviceService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 

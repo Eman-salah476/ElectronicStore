@@ -8,8 +8,9 @@ namespace ApplicationDemo.Domain.Entities
         public string Name { get; set; }
         public string Image { get; set; }
         public double Price { get; set; }
-        public bool HasDiscount { get; set; }
-        public double DiscountPrice { get; set; }
+        public bool HasDiscount { get; set; } = false;
+        public double DiscountRatio { get; set; }
+        public double ShippmentPrice { get; set; }
         public int Code { get; set; }
         public bool Available { get; set; }
         public string Details { get; set; }
@@ -23,7 +24,8 @@ namespace ApplicationDemo.Domain.Entities
         public Category Category { get; set; }
         public Brand Brand { get; set; }
         public List<DeviceProps> DeviceProps { get; set; }
+        public List<Offer> Offers { get; set; } = new List<Offer>();
 
-    
+
     }
 }

@@ -4,7 +4,7 @@ using ApplicationDemo.Domain.Entities;
 using ApplicationDemo.Infrastructure.Repositories.GenericRepository;
 using AutoMapper;
 
-namespace ApplicationDemo.Core.Services
+namespace ApplicationDemo.Core.Services.CategoryService
 {
     public class CategoryService : ILookUpService
     {

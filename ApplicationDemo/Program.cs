@@ -1,5 +1,4 @@
-using ApplicationDemo.Core.Services;
-using ApplicationDemo.Core.Services.Interfaces;
+using ApplicationDemo.Core.Services.DeviceService;
 using ApplicationDemo.Infrastructure.Context;
 using ApplicationDemo.Infrastructure.Repositories.GenericRepository;
 using Microsoft.EntityFrameworkCore;

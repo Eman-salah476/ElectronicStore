@@ -6,6 +6,9 @@
         public string Name { get; set; }
         public string Image { get; set; }
         public double Price { get; set; }
+        public bool HasDiscount { get; set; }
+        public double DiscountRatio { get; set; }
+        public double ShippmentPrice { get; set; }
         public int Code { get; set; }
         public bool Available { get; set; }
         public string Details { get; set; }

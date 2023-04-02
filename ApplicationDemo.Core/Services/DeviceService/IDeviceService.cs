@@ -1,6 +1,6 @@
 ﻿using ApplicationDemo.Core.Dtos.Device;
 
-namespace ApplicationDemo.Core.Services.Interfaces
+namespace ApplicationDemo.Core.Services.DeviceService
 {
     public interface IDeviceService
     {

@@ -1,6 +1,6 @@
 ﻿using ApplicationDemo.Domain.Entities;
 
-namespace ApplicationDemo.Core.Builders
+namespace ApplicationDemo.Domain.Builders
 {
     public class DeviceBuilder
     {
@@ -10,12 +10,17 @@ namespace ApplicationDemo.Core.Builders
         {
             _device = device;
         }
-                
+
         public DeviceBuilder SetDiscount(double discount)
         {
-            var priceAfterDiscount = _device.Price - (_device.Price * discount / 100);
             _device.HasDiscount = true;
-            _device.DiscountPrice = priceAfterDiscount;
+            _device.DiscountRatio = discount;
+            _device.Offers.Add(new Offer
+            {
+                Active = true,
+                Type = Enums.OfferType.PercentageOffOffer,
+                CreatedAt = DateTime.Now
+            });
             return this;
         }
 

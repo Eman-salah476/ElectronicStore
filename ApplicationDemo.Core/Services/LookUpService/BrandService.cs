@@ -4,13 +4,13 @@ using ApplicationDemo.Domain.Entities;
 using ApplicationDemo.Infrastructure.Repositories.GenericRepository;
 using AutoMapper;
 
-namespace ApplicationDemo.Core.Services
+namespace ApplicationDemo.Core.Services.LookUpService
 {
-    public class PropertyService : ILookUpService
+    public class BrandService : ILookUpService
     {
-        private readonly IGenericRepository<Property> _genericRepository;
+        private readonly IGenericRepository<Brand> _genericRepository;
         private readonly IMapper _mapper;
-        public PropertyService(IGenericRepository<Property> genericRepository, IMapper mapper)
+        public BrandService(IGenericRepository<Brand> genericRepository, IMapper mapper)
         {
             _genericRepository = genericRepository;
             _mapper = mapper;
@@ -19,14 +19,14 @@ namespace ApplicationDemo.Core.Services
 
         public bool AddLookUp(LookUpToAdd lookUpToAdd)
         {
-            var property = _mapper.Map<Property>(lookUpToAdd);
-            return _genericRepository.Add(property);
+            var brand = _mapper.Map<Brand>(lookUpToAdd);
+            return _genericRepository.Add(brand);
         }
 
         public List<LookUpDto> GetLookUps()
         {
-            var fetchedProperties = _genericRepository.GetAll();
-            return _mapper.Map<List<LookUpDto>>(fetchedProperties);
+            var fetchedBrands = _genericRepository.GetAll();
+            return _mapper.Map<List<LookUpDto>>(fetchedBrands);
         }
     }
 }

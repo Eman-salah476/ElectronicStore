@@ -1,11 +1,10 @@
-﻿using ApplicationDemo.Core.Builders;
-using ApplicationDemo.Core.Dtos.Device;
-using ApplicationDemo.Core.Services.Interfaces;
+﻿using ApplicationDemo.Core.Dtos.Device;
+using ApplicationDemo.Domain.Builders;
 using ApplicationDemo.Domain.Entities;
 using ApplicationDemo.Infrastructure.Repositories.GenericRepository;
 using AutoMapper;
 
-namespace ApplicationDemo.Core.Services
+namespace ApplicationDemo.Core.Services.DeviceService
 {
     public class DeviceService : IDeviceService
     {
@@ -20,7 +19,12 @@ namespace ApplicationDemo.Core.Services
         public bool AddDevice(DeviceToAddDto deviceToAddDto)
         {
             var device = _mapper.Map<Device>(deviceToAddDto);
-
+            if (deviceToAddDto.HasDiscount)
+            {
+                var deviceBuilder = new DeviceBuilder(device);
+                device = deviceBuilder.SetDiscount(deviceToAddDto.DiscountRatio)
+                                      .Build();
+            }
             var isAdded = _genericRepository.Add(device);
             return isAdded;
         }

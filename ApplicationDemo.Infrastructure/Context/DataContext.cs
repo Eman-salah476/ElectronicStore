@@ -18,6 +18,8 @@ namespace ApplicationDemo.Infrastructure.Context
         public DbSet<CategoryProps> CategoryProps { get; set; }
         public DbSet<Property> Properties { get; set; }
         public DbSet<DeviceProps> DeviceProps { get; set; }
+        public DbSet<Offer> Offers { get; set; }
+        
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -13,7 +13,8 @@ namespace ApplicationDemo.Core.Helpers
             CreateMap<Brand, LookUpDto>().ReverseMap();
             CreateMap<Property, LookUpDto>().ReverseMap();
 
-            CreateMap<DeviceToAddDto, Device>();
+            CreateMap<DeviceToAddDto, Device>()
+                .AfterMap((src, dest) => dest.CreatedAt = DateTime.Now);
             CreateMap<Device, DeviceToDisplayDto>();
         }
     }
