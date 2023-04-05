@@ -8,19 +8,35 @@ namespace ApplicationDemo.Core.Observer
 {
     public class DeviceObservable : IObservable
     {
-        public bool AddSubscriber()
+        private readonly List<Subscriber> _subscribers = new List<Subscriber>();
+        public DeviceObservable( List<Subscriber> subscribers)
         {
-            throw new NotImplementedException();
+            _subscribers = subscribers;
         }
 
-        public void NotifySubscribers(Guid id)
+        //Add Users to subscribe 
+        public bool AddSubscriber(Subscriber subscriber)
         {
-            throw new NotImplementedException();
+            _subscribers.Add(subscriber);
+            return true;
+        }
+
+        public void NotifySubscribers()
+        {
+            foreach (var subscriber in _subscribers)
+            {
+                subscriber.Update(this);
+            }
         }
 
         public bool UpdateStatus(Guid deviceId, bool available)
         {
-            throw new NotImplementedException();
+            //Get Device
+
+            //Update Device Status
+
+            NotifySubscribers();
+            return true;
         }
     }
 }

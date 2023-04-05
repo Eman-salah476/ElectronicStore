@@ -2,6 +2,6 @@
 {
     public interface IObserver
     {
-        void Update(Guid deviceId);
+        void Update(IObservable observable);
     }
 }

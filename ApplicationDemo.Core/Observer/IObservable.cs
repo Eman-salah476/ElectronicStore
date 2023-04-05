@@ -3,8 +3,8 @@
     public interface IObservable
     {
         bool UpdateStatus(Guid deviceId, bool available);
-        void NotifySubscribers(Guid id);
-        bool AddSubscriber();
+        void NotifySubscribers();
+        bool AddSubscriber(Subscriber subscriber);
 
     }
 }
