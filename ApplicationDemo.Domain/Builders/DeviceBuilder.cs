@@ -19,7 +19,8 @@ namespace ApplicationDemo.Domain.Builders
             {
                 Active = true,
                 Type = Enums.OfferType.PercentageOffOffer,
-                CreatedAt = DateTime.Now
+                CreatedAt = DateTime.Now,
+                ExpireDate = DateTime.MaxValue,
             });
             return this;
         }

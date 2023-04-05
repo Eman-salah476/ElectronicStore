@@ -1,6 +1,5 @@
-﻿using ApplicationDemo.Core.Dtos.LookUp;
-using ApplicationDemo.Core.Services.Interfaces;
-using ApplicationDemo.Domain.Entities;
+﻿using ApplicationDemo.Core.Dtos.LookUps;
+using ApplicationDemo.Core.Services.CategoryService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApplicationDemo.Controllers
@@ -9,35 +8,21 @@ namespace ApplicationDemo.Controllers
     [Route("api/Category")]
     public class CategoryController : Controller
     {
-        private readonly ILookUpService _lookUpService;
-        public CategoryController(ILookUpService lookUpService)
+        private readonly ICategoryService _categoryService;
+        public CategoryController(ICategoryService categoryService)
         {
-            _lookUpService = lookUpService;
+        _categoryService = categoryService;
         }
         [HttpPost]
-        public ActionResult Add(LookUpToAdd lookUpToAdd)
+        public ActionResult Add(CategoryToAddDto categoryToAddDto)
         {
             try
             {
-                var isAdded = _lookUpService.AddLookUp(lookUpToAdd);
+                var isAdded = _categoryService.AddCatgory(categoryToAddDto);
                 if (!isAdded)
                     return BadRequest();
 
                 return Ok();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
-        [HttpGet]
-        public ActionResult Get()
-        {
-            try
-            {
-                var fetchedCategories = _lookUpService.GetLookUps();
-                return Ok(fetchedCategories);
             }
             catch (Exception ex)
             {

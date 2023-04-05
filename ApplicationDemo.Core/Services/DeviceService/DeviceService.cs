@@ -41,7 +41,7 @@ namespace ApplicationDemo.Core.Services.DeviceService
         public List<DeviceToDisplayDto> GetDevices(FilterationCriteria filterationCriteria)
         {
             var fetchedDeviced = _genericRepository.GetAll();
-            if (fetchedDeviced is null || fetchedDeviced.Count == 0)
+            if (fetchedDeviced is null)
                 return null;
             var devicesToDisplay = _mapper.Map<List<DeviceToDisplayDto>>(fetchedDeviced);
             return devicesToDisplay;

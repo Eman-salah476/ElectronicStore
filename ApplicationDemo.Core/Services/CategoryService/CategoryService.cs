@@ -1,12 +1,13 @@
 ﻿using ApplicationDemo.Core.Dtos.LookUp;
-using ApplicationDemo.Core.Services.Interfaces;
+using ApplicationDemo.Core.Dtos.LookUps;
+using ApplicationDemo.Core.Services.LookUpService;
 using ApplicationDemo.Domain.Entities;
 using ApplicationDemo.Infrastructure.Repositories.GenericRepository;
 using AutoMapper;
 
 namespace ApplicationDemo.Core.Services.CategoryService
 {
-    public class CategoryService : ILookUpService
+    public class CategoryService : ICategoryService
     {
         private readonly IGenericRepository<Category> _genericRepository;
         private readonly IMapper _mapper;
@@ -16,9 +17,9 @@ namespace ApplicationDemo.Core.Services.CategoryService
             _mapper = mapper;
         }
 
-        public bool AddLookUp(LookUpToAdd lookUpToAdd)
+        public bool AddCatgory(CategoryToAddDto categoryToAddDto)
         {
-            var category = _mapper.Map<Category>(lookUpToAdd);
+            var category = _mapper.Map<Category>(categoryToAddDto);
             return _genericRepository.Add(category);
         }
 

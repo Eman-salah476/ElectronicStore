@@ -9,7 +9,7 @@ namespace ApplicationDemo.Domain.Entities
         [ForeignKey("Device")]
         public Guid DeviceId { get; set; }
         public OfferType Type { get; set; }
-        public bool Active { get; set; }
+        public bool Active { get; set; } = true;
         public DateTime ExpireDate { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }

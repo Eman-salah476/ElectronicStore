@@ -8,7 +8,7 @@
             this.percentage = percentage;
         }
 
-        public double ApplyOffer(double price)
+        public override double ApplyOffer(double price)
         {
             return base.ApplyOffer(price) * (1 - percentage / 100);
         }

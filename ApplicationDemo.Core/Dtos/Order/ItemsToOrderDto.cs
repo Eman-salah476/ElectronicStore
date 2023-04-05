@@ -3,7 +3,6 @@
     public class ItemsToOrderDto
     {
         public List<Item> Items { get; set; }
-        public double ShippmentPrice { get; set; }
 
     }
 

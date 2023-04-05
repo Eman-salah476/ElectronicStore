@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ApplicationDemo.Core.Dtos.Offer;
+using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 
 namespace ApplicationDemo.Core.Dtos.Device
@@ -7,7 +8,6 @@ namespace ApplicationDemo.Core.Dtos.Device
     {
         [Required]
         public string Name { get; set; }
-        public IFormFile DeviceImage { get; set; }
         [Required]
         public double Price { get; set; }
         public bool HasDiscount { get; set; }
@@ -19,9 +19,10 @@ namespace ApplicationDemo.Core.Dtos.Device
         public bool Available { get; set; } = true;
         public string Details { get; set; }
         [Required]
-        public int CategoryId { get; set; }
+        public Guid CategoryId { get; set; }
         [Required]
-        public int BrandId { get; set; }
+        public Guid BrandId { get; set; }
         public List<DevicePropsDto> DeviceProps { get; set; }
+        public List<DeviceOffersDto> Offers { get; set; }
     }
 }

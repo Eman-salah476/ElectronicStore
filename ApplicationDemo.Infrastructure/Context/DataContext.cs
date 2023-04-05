@@ -19,6 +19,8 @@ namespace ApplicationDemo.Infrastructure.Context
         public DbSet<Property> Properties { get; set; }
         public DbSet<DeviceProps> DeviceProps { get; set; }
         public DbSet<Offer> Offers { get; set; }
+        public DbSet<Order> Orders { get; set; }
+
         
 
 

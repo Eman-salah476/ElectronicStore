@@ -1,7 +1,10 @@
 ﻿using ApplicationDemo.Core.Decorators.OfferDecorator;
 using ApplicationDemo.Core.Dtos.Order;
+using ApplicationDemo.Domain.Command;
 using ApplicationDemo.Domain.Entities;
+using ApplicationDemo.Domain.Enums;
 using ApplicationDemo.Infrastructure.Repositories.GenericRepository;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApplicationDemo.Core.Services.OrderService
@@ -9,9 +12,20 @@ namespace ApplicationDemo.Core.Services.OrderService
     public class OrderService : IOrderService
     {
         private readonly IGenericRepository<Device> _deviceRepository;
-        public OrderService(IGenericRepository<Device> deviceRepository)
+        private readonly IGenericRepository<Order> _orderRepository;
+        private readonly IMapper _mapper;
+        public OrderService(IGenericRepository<Device> deviceRepository, IGenericRepository<Order> orderRepository,
+                            IMapper mapper)
         {
             _deviceRepository = deviceRepository;
+            _orderRepository = orderRepository;
+            _mapper = mapper;
+        }
+
+        public bool Add(OrderToAddDto orderToAddDto)
+        {
+            var order = _mapper.Map<Order>(orderToAddDto);
+            return _orderRepository.Add(order);
         }
 
         //Apply Offers Decorators and calculate total price
@@ -30,7 +44,23 @@ namespace ApplicationDemo.Core.Services.OrderService
             return totalPrice;
         }
 
+        //Call Command for order status
+        public bool UpdateOrder(Guid id)
+        {
+            var fetchedOrder = _orderRepository.GetById(id);
+            if (fetchedOrder is null)
+                return false;
+
+            IOrderCommand command = new CancelOrderCommand(fetchedOrder);
+            fetchedOrder.ExcuteCommand(command);
+
+            var isUpdated = _orderRepository.Update(fetchedOrder);
+            return isUpdated;
+        }
+
+       
         #region Helpers
+        //Decorator
         private double CalculateItemFinalPrice(Device device, int itemNumber)
         {
             var itemPrice = (device.Price * itemNumber) + device.ShippmentPrice;
@@ -42,13 +72,13 @@ namespace ApplicationDemo.Core.Services.OrderService
                 {
                     switch (deviceOffer.Type)
                     {
-                        case Domain.Enums.OfferType.BuyOneGetOneOffer:
+                        case OfferType.BuyOneGetOneOffer:
                             offer = new BuyOneGetOneOffer(offer);
                             break;
-                        case Domain.Enums.OfferType.FreeShippingOffer:
+                        case OfferType.FreeShippingOffer:
                             offer = new FreeShippingOffer(offer, device.ShippmentPrice);
                             break;
-                        case Domain.Enums.OfferType.PercentageOffOffer:
+                        case OfferType.PercentageOffOffer:
                             offer = new PercentageOffOffer(offer, device.DiscountRatio);
                             break;
                     }

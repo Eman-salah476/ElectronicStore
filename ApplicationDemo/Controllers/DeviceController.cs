@@ -51,7 +51,7 @@ namespace ApplicationDemo.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddDevice([FromForm] DeviceToAddDto deviceToAddDto)
+        public ActionResult AddDevice(DeviceToAddDto deviceToAddDto)
         {
             try
             {

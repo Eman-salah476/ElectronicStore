@@ -1,6 +1,6 @@
 ﻿using ApplicationDemo.Core.Dtos.LookUp;
 
-namespace ApplicationDemo.Core.Services.Interfaces
+namespace ApplicationDemo.Core.Services.LookUpService
 {
     public interface ILookUpService
     {
