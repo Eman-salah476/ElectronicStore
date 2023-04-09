@@ -3,6 +3,7 @@ using ApplicationDemo.Domain.Builders;
 using ApplicationDemo.Domain.Entities;
 using ApplicationDemo.Infrastructure.Repositories.GenericRepository;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApplicationDemo.Core.Services.DeviceService
 {
@@ -32,6 +33,8 @@ namespace ApplicationDemo.Core.Services.DeviceService
         public DeviceToDisplayDto GetDevice(Guid id)
         {
             var fetchedDevice = _genericRepository.GetById(id);
+            //var fetchedDevice2 = _genericRepository.FindByCondition(x=>x.Id == id, 
+            //     i => i.Include(a => a.DeviceProps).ThenInclude(f => f.Property));
             if (fetchedDevice is null)
                 return null;
             var devicetoDisplay = _mapper.Map<DeviceToDisplayDto>(fetchedDevice);
