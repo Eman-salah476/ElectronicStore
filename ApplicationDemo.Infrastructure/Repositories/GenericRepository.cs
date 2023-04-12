@@ -1,9 +1,9 @@
-﻿
-using ApplicationDemo.Infrastructure.Context;
+﻿using ApplicationDemo.Infrastructure.Context;
+using ApplicationDemo.Infrastructure.Repositories.GenericRepository;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
 
-namespace ApplicationDemo.Infrastructure.Repositories.GenericRepository
+namespace ApplicationDemo.Infrastructure.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
@@ -34,7 +34,7 @@ namespace ApplicationDemo.Infrastructure.Repositories.GenericRepository
                                        Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
         {
             IQueryable<T> query = _context.Set<T>();
-            if(expression != null)
+            if (expression != null)
                 query = query.Where(expression);
 
             if (include != null)

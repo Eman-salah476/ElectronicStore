@@ -14,9 +14,7 @@ namespace ApplicationDemo.Domain.Entities
         public int Code { get; set; }
         public bool Available { get; set; }
         public string Details { get; set; }
-        [ForeignKey("Category")]
         public Guid CategoryId { get; set; }
-        [ForeignKey("Brand")]
         public Guid BrandId { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }

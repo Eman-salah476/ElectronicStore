@@ -6,7 +6,6 @@ namespace ApplicationDemo.Domain.Entities
     public class Offer
     {
         public Guid Id { get; set; }
-        [ForeignKey("Device")]
         public Guid DeviceId { get; set; }
         public OfferType Type { get; set; }
         public bool Active { get; set; } = true;
