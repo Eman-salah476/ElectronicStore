@@ -1,5 +1,5 @@
-﻿using ApplicationDemo.Infrastructure.Context;
-using ApplicationDemo.Infrastructure.Repositories.GenericRepository;
+﻿using ApplicationDemo.Domain.Repositories;
+using ApplicationDemo.Infrastructure.Presistence.Context;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
 

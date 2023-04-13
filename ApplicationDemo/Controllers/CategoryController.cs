@@ -1,5 +1,5 @@
-﻿using ApplicationDemo.Core.Dtos.LookUps;
-using ApplicationDemo.Core.Services.CategoryService;
+﻿using ApplicationDemo.Application.Dtos.LookUps;
+using ApplicationDemo.Application.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApplicationDemo.Controllers

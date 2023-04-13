@@ -1,11 +1,11 @@
-﻿using ApplicationDemo.Core.Dtos.Device;
+﻿using ApplicationDemo.Application.Dtos.Device;
+using ApplicationDemo.Application.Services.Interfaces;
 using ApplicationDemo.Domain.Builders;
 using ApplicationDemo.Domain.Entities;
-using ApplicationDemo.Infrastructure.Repositories.GenericRepository;
+using ApplicationDemo.Domain.Repositories;
 using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 
-namespace ApplicationDemo.Core.Services.DeviceService
+namespace ApplicationDemo.Application.Services
 {
     public class DeviceService : IDeviceService
     {

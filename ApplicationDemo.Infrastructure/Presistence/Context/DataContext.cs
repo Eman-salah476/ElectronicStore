@@ -2,7 +2,7 @@
 using ApplicationDemo.Infrastructure.DataSeeder;
 using Microsoft.EntityFrameworkCore;
 
-namespace ApplicationDemo.Infrastructure.Context
+namespace ApplicationDemo.Infrastructure.Presistence.Context
 {
     public class DataContext : DbContext
     {

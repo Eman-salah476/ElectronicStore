@@ -1,6 +1,6 @@
-﻿using ApplicationDemo.Core.Dtos.Order;
+﻿using ApplicationDemo.Application.Dtos.Order;
 
-namespace ApplicationDemo.Core.Services.OrderService
+namespace ApplicationDemo.Application.Services.Interfaces
 {
     public interface IOrderService
     {

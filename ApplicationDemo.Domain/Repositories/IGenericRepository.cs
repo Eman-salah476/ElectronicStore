@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
 
-namespace ApplicationDemo.Infrastructure.Repositories.GenericRepository
+namespace ApplicationDemo.Domain.Repositories
 {
     public interface IGenericRepository<T> where T : class
     {

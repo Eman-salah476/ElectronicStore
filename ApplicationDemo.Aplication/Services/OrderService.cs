@@ -1,13 +1,14 @@
-﻿using ApplicationDemo.Core.Decorators.OfferDecorator;
-using ApplicationDemo.Core.Dtos.Order;
+﻿using ApplicationDemo.Application.Decorators.OfferDecorator;
+using ApplicationDemo.Application.Dtos.Order;
+using ApplicationDemo.Application.Services.Interfaces;
 using ApplicationDemo.Domain.Command;
 using ApplicationDemo.Domain.Entities;
 using ApplicationDemo.Domain.Enums;
-using ApplicationDemo.Infrastructure.Repositories.GenericRepository;
+using ApplicationDemo.Domain.Repositories;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
-namespace ApplicationDemo.Core.Services.OrderService
+namespace ApplicationDemo.Application.Services
 {
     public class OrderService : IOrderService
     {
@@ -58,12 +59,12 @@ namespace ApplicationDemo.Core.Services.OrderService
             return isUpdated;
         }
 
-       
+
         #region Helpers
         //Decorator
         private double CalculateItemFinalPrice(Device device, int itemNumber)
         {
-            var itemPrice = (device.Price * itemNumber) + device.ShippmentPrice;
+            var itemPrice = device.Price * itemNumber + device.ShippmentPrice;
             IOffer offer = new BaseOffer();
 
             foreach (var deviceOffer in device.Offers)

@@ -1,11 +1,11 @@
-﻿using ApplicationDemo.Core.Dtos.LookUp;
-using ApplicationDemo.Core.Dtos.LookUps;
-using ApplicationDemo.Core.Services.LookUpService;
+﻿using ApplicationDemo.Application.Dtos.LookUp;
+using ApplicationDemo.Application.Dtos.LookUps;
+using ApplicationDemo.Application.Services.Interfaces;
 using ApplicationDemo.Domain.Entities;
-using ApplicationDemo.Infrastructure.Repositories.GenericRepository;
+using ApplicationDemo.Domain.Repositories;
 using AutoMapper;
 
-namespace ApplicationDemo.Core.Services.CategoryService
+namespace ApplicationDemo.Application.Services
 {
     public class CategoryService : ICategoryService
     {

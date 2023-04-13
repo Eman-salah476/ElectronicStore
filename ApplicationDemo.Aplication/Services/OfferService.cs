@@ -1,9 +1,10 @@
-﻿using ApplicationDemo.Core.Dtos.Offer;
+﻿using ApplicationDemo.Application.Dtos.Offer;
+using ApplicationDemo.Application.Services.Interfaces;
 using ApplicationDemo.Domain.Entities;
-using ApplicationDemo.Infrastructure.Repositories.GenericRepository;
+using ApplicationDemo.Domain.Repositories;
 using AutoMapper;
 
-namespace ApplicationDemo.Core.Services.OfferService
+namespace ApplicationDemo.Application.Services
 {
     public class OfferService : IOfferService
     {

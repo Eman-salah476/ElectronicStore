@@ -1,9 +1,10 @@
 ﻿using ApplicationDemo.Core.Dtos.LookUp;
+using ApplicationDemo.Core.Services.Interfaces;
 using ApplicationDemo.Domain.Entities;
 using ApplicationDemo.Infrastructure.Repositories.GenericRepository;
 using AutoMapper;
 
-namespace ApplicationDemo.Core.Services.LookUpService
+namespace ApplicationDemo.Core.Services
 {
     public class BrandService : ILookUpService
     {

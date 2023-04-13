@@ -1,6 +1,6 @@
 ﻿using ApplicationDemo.Core.Dtos.Offer;
 
-namespace ApplicationDemo.Core.Services.OfferService
+namespace ApplicationDemo.Core.Services.Interfaces
 {
     public interface IOfferService
     {
