@@ -1,5 +1,5 @@
-﻿using ApplicationDemo.Core.Dtos.Order;
-using ApplicationDemo.Core.Services.OrderService;
+﻿using ApplicationDemo.Application.Dtos.Order;
+using ApplicationDemo.Application.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApplicationDemo.Controllers

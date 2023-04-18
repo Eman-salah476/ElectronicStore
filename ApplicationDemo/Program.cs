@@ -1,11 +1,9 @@
-using ApplicationDemo.Core.Helpers;
-using ApplicationDemo.Core.Services.CategoryService;
-using ApplicationDemo.Core.Services.DeviceService;
-using ApplicationDemo.Core.Services.LookUpService;
-using ApplicationDemo.Core.Services.OfferService;
-using ApplicationDemo.Core.Services.OrderService;
-using ApplicationDemo.Infrastructure.Context;
-using ApplicationDemo.Infrastructure.Repositories.GenericRepository;
+using ApplicationDemo.Application.Helpers;
+using ApplicationDemo.Application.Services;
+using ApplicationDemo.Application.Services.Interfaces;
+using ApplicationDemo.Domain.Repositories;
+using ApplicationDemo.Infrastructure.Presistence.Context;
+using ApplicationDemo.Infrastructure.Repositories;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddDbContextPool<DataContext>(
             options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBaseConnection"),
-            x => x.MigrationsAssembly("ApplicationDemo.Infrastructure")
+            x => x.MigrationsAssembly("ApplicationDemo.Infrastructure.Presistence")
             ));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
